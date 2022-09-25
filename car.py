@@ -3,18 +3,20 @@ class Toyota:
     __current_speed = 0
     __current_gear = 0
 
-    def __init__(self, engine, transmission, color):
+    def __init__(self, name, engine, transmission, color):
+        self.name = name
         self.engine = engine
         self.transmission = transmission
         self.color = color
 
+
     def __str__(self):
-        car_detail = ("Car has: "
-                "engine: " + str(self.engine) + " ltr., " +
-                "transmission: " + self.transmission + ", "
-                "color: " + self.color + ", " +
-                "current speed: " + str(self.__current_speed) + " km/h, " +
-                "current transmission gear: " + str(self.__current_gear))
+        car_detail = ("Car " + self.name + ":\n"
+                    "\tengine: " + str(self.engine) + " ltr., " +
+                    "\ttransmission: " + self.transmission + ", "
+                    "\tcolor: " + self.color + ", " +
+                    "\tcurrent speed: " + str(self.__current_speed) + " km/h, " +
+                    "\tcurrent transmission gear: " + str(self.__current_gear))
         return car_detail
 
     def drive(self, speed, up_down):
