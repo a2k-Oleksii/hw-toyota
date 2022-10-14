@@ -4,19 +4,30 @@ class Toyota:
     __current_gear = 0
 
     def __init__(self, name, engine, transmission, color):
-        self.name = name
-        self.engine = engine
-        self.transmission = transmission
-        self.color = color
+        self.__name = name
+        self.__engine = engine
+        self.__transmission = transmission
+        self.__color = color
 
+    def generate_dict(self):
+        new_dict = {"name": self.__name, "engine": self.__engine, "transmission": self.__transmission, "color": self.__color}
+        return new_dict
+
+    @property
+    def color(self):
+        return self.__color
+
+    @color.setter
+    def color(self, new_color):
+        self.__color = new_color
 
     def __str__(self):
-        car_detail = ("Car " + self.name + ":\n"
-                    "\tengine: " + str(self.engine) + " ltr., " +
-                    "\ttransmission: " + self.transmission + ", "
-                    "\tcolor: " + self.color + ", " +
-                    "\tcurrent speed: " + str(self.__current_speed) + " km/h, " +
-                    "\tcurrent transmission gear: " + str(self.__current_gear))
+        car_detail = ("Car " + self.__name + ":\n"
+                    "\tengine: " + str(self.__engine) + " ltr., " +
+                    "\ttransmission: " + self.__transmission + ", "
+                    "\tcolor: " + self.__color + ", " +
+                      "\tcurrent speed: " + str(self.__current_speed) + " km/h, " +
+                      "\tcurrent transmission gear: " + str(self.__current_gear))
         return car_detail
 
     def drive(self, speed, up_down):
@@ -40,9 +51,9 @@ class Toyota:
     def __shift_gear(self):
         # When transmission manual number gear input user
         # when transmission automatic number gear set automatic
-        if self.transmission == "manual":
+        if self.__transmission == "manual":
             self.__current_gear = int(input("Input needed transmission gear: "))
-        elif self.transmission == "auto":
+        elif self.__transmission == "auto":
             if self.__current_speed == 0:
                 self.__current_gear = 0
             elif self.__current_speed <= 30:
@@ -51,8 +62,7 @@ class Toyota:
                 self.__current_gear = 2
             elif self.__current_speed <= 65:
                 self.__current_gear = 3
-            elif self.__current_speed > 80:
+            elif self.__current_speed <= 80:
                 self.__current_gear = 4
-
-    def change_color(self, color):
-        self.color = color
+            else:
+                self.__current_gear = 5
