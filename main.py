@@ -26,7 +26,7 @@ if __name__ == '__main__':
             color = input("Color car: ")
             car = Toyota(name, engine, transmission, color)
             if len(cars_garage) > 0:
-                id = len(cars_garage) + 1
+                id = str(len(cars_garage) + 1)
                 cars_garage[id] = car
             else:
                 cars_garage[1] = car
@@ -39,7 +39,7 @@ if __name__ == '__main__':
                 print("car id: ", str(key), " -> ", cars_garage[key])
             car_drive_id = input("Enter car id: ")
             speed = int(input("Enter speed your car: "))
-            up_down = input("Set speed input 'up' when braking input 'down: ")
+            up_down = input("Set speed input 'up' when braking input 'down': ")
             cars_garage[car_drive_id].drive(speed, up_down)
             print(cars_garage[car_drive_id])
         elif flag == 4:
@@ -51,7 +51,7 @@ if __name__ == '__main__':
             cars_garage[car_id].color = new_color
             print(cars_garage[car_id])
         elif flag == 0:
-            garage =[]
+            garage = []
             for key in cars_garage.keys():
                 print("car id: ", str(key), " -> ", cars_garage[key])
                 car = {key: cars_garage[key].generate_dict()}
